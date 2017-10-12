@@ -17,7 +17,7 @@ export default new Vuex.Store({
     Register (state, payload) {
       state.Register = payload
     },
-    getArticles (state, payload) {
+    AllArticles (state, payload) {
       state.getArticles = payload
     }
   },
@@ -62,8 +62,8 @@ export default new Vuex.Store({
         }
       })
       .then(response => {
-        console.log('-------->>>' + response)
-        store.commit('getArticles', response.data)
+        console.log('-------->>> response all' + response)
+        store.commit('AllArticles', response.data)
       })
     }
   }

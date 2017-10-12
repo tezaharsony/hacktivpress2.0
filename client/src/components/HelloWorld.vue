@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
     <div v-for = 'art in Articles'>
-      <h1> {{ art.content }}</h1>
+      <h2>judul:</h2>
+      <h1>{{ art.title}}</h1>
+      <h2>content</h2>
+      <p> {{ art.content }}</p>
     </div>
   </div>
 </template>
@@ -17,16 +20,16 @@ export default {
   },
   computed: {
     Articles () {
-      return this.$store.state.getAllArticles
+      return this.$store.state.getArticles
     }
   },
   methods: {
     ...mapActions([
-      'AllArticles'
+      'getArticles'
     ])
   },
   mounted () {
-    this.AllArticles()
+    this.getArticles()
   }
 }
 </script>
