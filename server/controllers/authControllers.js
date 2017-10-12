@@ -1,13 +1,13 @@
 var userAuth = require ('../models/modelUsers')
-var bcrypt = require ('bcrypt')
+var bcrypt = require ('bcryptjs')
 var jwt = require ('jsonwebtoken')
 
 var Login = function (req,res) {
-  userAuth.findOne({name: req.body.name}, (err, user) => {
+  userAuth.findOne({name: req.body.name}, function (err, user) {
     if (bcrypt.compareSync(req.body.password, user.password)) {
       var token = jwt.sign({
-        id = user._id,
-        name = user.name
+        id : user._id,
+        name : user.name
       },'sssshhhh')
       res.send({
         token: token,
@@ -16,8 +16,6 @@ var Login = function (req,res) {
     } else {
     res.send('please insert your password')
     }
-  } else {
-    res.send('cant find user')
   })
 }
 
