@@ -3,10 +3,13 @@
     <div v-for = 'art in Articles'>
       <h2>judul:</h2>
       <h1>{{ art.title}}</h1>
-      <h2>content</h2>
-      <p> {{ art.content }}</p>
+      <div class="card-body">
+        <h2>content</h2>
+        <p> {{ art.content }}</p>
+     </div>
     </div>
   </div>
+
 </template>
 
 <script>
