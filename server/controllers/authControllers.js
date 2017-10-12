@@ -14,7 +14,7 @@ var Login = function (req,res) {
         name: user.name
       })
     } else {
-    res.send('please insert your password')
+    res.send('please insert your correct password')
     }
   })
 }
