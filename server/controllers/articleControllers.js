@@ -1,6 +1,25 @@
 var Article = require ('../models/modelArticles')
 
-var
+var createArticle = function(req,res){
+  let newArticle = new Article({
+    title : req.body.title,
+    content : req.body.content,
+    category : req.body.category,
+    createdAt : new Date(),
+    author : req.headers.authentic.id
+  })
+  newArticle.save((err, article) =>{
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(article)
+    }
+  })
+}
+
+module.exports = {
+  createArticle
+};
 
 
 

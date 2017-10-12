@@ -14,7 +14,7 @@ var auth = (req, res, next) => {
   }
 }
 
-router.post('/', auth, userCont.newUser)
+router.post('/', userCont.newUser)
 router.get('/', auth, userCont.getAllUsers)
 router.delete('/:id/deluser', auth, userCont.removeSpecifiedUser)
 
