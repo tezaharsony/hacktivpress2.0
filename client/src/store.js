@@ -7,7 +7,8 @@ vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     Login: [],
-    Register: []
+    Register: [],
+    getArticles: []
   },
   mutations: {
     Login (state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     Register (state, payload) {
       state.Register = payload
+    },
+    getArticles (state, payload) {
+      state.getArticles = payload
     }
   },
   actions: {
@@ -49,6 +53,17 @@ export default new Vuex.Store({
       })
       .catch(err => {
         console.log(err)
+      })
+    },
+    AllArticles (store) {
+      axios.get('http://localhost:3000/api/articles', {
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+      .then(response => {
+        console.log('-------->>>' + response)
+        store.commit('getArticles', response.data)
       })
     }
   }
